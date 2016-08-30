@@ -73,8 +73,8 @@ public class BankcodeServiceImpl implements BankcodeService {
 
 	@Override
 	public List<Bankcode> findAllBank() {
+		
 		String sql = "SELECT * FROM BANKCODE ";
-
 		logger.info("findAllBank: " + sql);
 
 		List<Bankcode> listBankcode = this.jdbcTemplate.query(sql, new BankcodeMapper());
