@@ -1,0 +1,12 @@
+/target/
+target/
+target
+.idea
+*.iml
+.factorypath
+classes
+bin/
+.classpath
+.project
+.settings/
+Gemfile.lock
