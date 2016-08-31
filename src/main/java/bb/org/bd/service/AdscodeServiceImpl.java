@@ -25,6 +25,18 @@ public class AdscodeServiceImpl implements AdscodeService {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
+	
+	@Override
+	public void saveAdscode(Adscode adscode) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateUser(Adscode Adscode) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public Adscode findByAdscode(String adscode) {

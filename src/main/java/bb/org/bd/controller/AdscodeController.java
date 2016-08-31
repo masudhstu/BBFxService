@@ -10,15 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import bb.org.bd.constants.Constants;
 import bb.org.bd.model.Adscode;
@@ -28,7 +31,7 @@ import bb.org.bd.service.AdscodeService;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class AdscodeController {
 
 	private static final Logger logger = Logger.getLogger(Constants.class);
 
@@ -98,9 +101,31 @@ public class HomeController {
 		model.setViewName("ContactForm");
 		return model;
 	}
+	
+	
 
 	// -----------------WS-----------------------------------
 
+    //-------------------Create a User--------------------------------------------------------
+    
+    @RequestMapping(value = "/ws-adscodes/add", method = RequestMethod.POST)
+    public ResponseEntity<Void> createUser(@RequestBody Adscode adscode,    UriComponentsBuilder ucBuilder) {
+        System.out.println("Creating adscode " + adscode.getAdscode());
+ 
+        /*if (userService.isUserExist(user)) {
+            System.out.println("A User with name " + user.getName() + " already exist");
+            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+        }*/
+ 
+        logger.debug(adscode);
+        adscodeService.saveAdscode(adscode);
+        
+ 
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/ws-adscodes/{adscode}").buildAndExpand(adscode.getAdscode()).toUri());
+        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+    }
+	
 	@RequestMapping(value = "/ws-adscodes", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Adscode>> listContact() {
 		List<Adscode> listContact = adscodeService.findAllAdscode();

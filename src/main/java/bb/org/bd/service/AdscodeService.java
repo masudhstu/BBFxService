@@ -10,9 +10,9 @@ public interface AdscodeService {
 
 	Adscode findByName(String name);
 
-	//void saveUser(Adscode adscode);
+	void saveAdscode(Adscode adscode);
 
-	//void updateUser(Adscode Adscode);
+	void updateUser(Adscode Adscode);
 
 	//void deleteUserById(long id);
 
