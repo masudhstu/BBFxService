@@ -1,11 +1,6 @@
 /target/
 target/
 target
-/src/target/
-src/target/
-src/target
-
-
 .idea
 *.iml
 .factorypath
