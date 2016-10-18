@@ -15,7 +15,8 @@ public class Adscode {
 	private String obuYn;
 	private BigDecimal reportOffice;
 	private String contactNo;
-    public String getContactNo() {
+    
+	public String getContactNo() {
 		return contactNo;
 	}
 
