@@ -8,7 +8,6 @@
     <context:component-scan base-package="com.spring.series.jdbc.dao.impl" />
  
     <!-- dataSource configuration -->
-    <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
     <bean id="dataSource" class="bb.org.bd.security.EncryptedDriverManagerDataSource">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
         <!-- <property name="url" value="ZyDu5uzlO+BX5pHv7aZPcYmHqjReU+ascAmgCmPj7DfKXikTAWMzMvgi78kkrHRv" /> -->

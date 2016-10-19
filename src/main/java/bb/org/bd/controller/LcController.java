@@ -98,6 +98,10 @@ public class LcController {
 			return new ResponseEntity<LC>(responseHeaders, HttpStatus.NO_CONTENT);
 			// You many decide to return HttpStatus.NO_CONTENT
 		}
+		else
+		{
+			logger.info("returing LCs with HttpStatus.OK");
+		}
 		
 		return new ResponseEntity<LC>(oLC, responseHeaders, HttpStatus.OK);
 	}

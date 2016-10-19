@@ -74,9 +74,12 @@ public class ExpController {
 		responseHeaders.add("log_id", headers.getId_log().toString());
 
 		if (oExp_Info == null) {
-			logger.warn("No Exp_Info is found");
-			return new ResponseEntity<Exp_Info>(responseHeaders, HttpStatus.NOT_FOUND);
+			logger.warn("No Exp is found, returning HttpStatus.NO_CONTENT");
+			return new ResponseEntity<Exp_Info>(responseHeaders, HttpStatus.NO_CONTENT);
 			// You many decide to return HttpStatus.NO_CONTENT
+		}
+		{
+			logger.info("returing EXPs with HttpStatus.OK");
 		}
 		
 		return new ResponseEntity<Exp_Info>(oExp_Info, responseHeaders, HttpStatus.OK);

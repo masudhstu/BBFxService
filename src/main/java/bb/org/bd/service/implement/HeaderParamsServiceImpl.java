@@ -51,8 +51,8 @@ public class HeaderParamsServiceImpl implements HeaderParamsService {
 			parameters.addValue("ENTRY_USER", "CUSTOMS-WEB");
 			
 			KeyHolder keyHolder = new GeneratedKeyHolder();
-			//int nums = jdbcTemplate.update(CREATE_SQL, parameters,	keyHolder, new String[]{"ID_LOG"});
-			//logger.info("Number of row inserted: " + nums);
+			int nums = jdbcTemplate.update(CREATE_SQL, parameters,	keyHolder, new String[]{"ID_LOG"});
+			logger.info("Number of row inserted: " + nums);
 			
 			BigInteger generatedIdLog = BigInteger.valueOf(keyHolder.getKey().longValue());
 			params.setId_log(generatedIdLog);

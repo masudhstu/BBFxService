@@ -11,16 +11,18 @@
 
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L- %m%n" />
 		</layout>
 	</appender>
 
-	<appender name="file" class="org.apache.log4j.RollingFileAppender">
-				
-		<param name="file" value="${catalina.home}/logs/fxserver.log" /> 
+		<!-- <appender name="file" class="org.apache.log4j.RollingFileAppender"> -->
+	<appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${catalina.home}/logs/fxserver.log" />
+		<param name="DatePattern" value=".yyyy-MM-dd" />
 		<!-- <param name="file" value="/logs/appLog.log" /> -->
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L (%t)-%m%n" />
 		</layout>
 	</appender>
 

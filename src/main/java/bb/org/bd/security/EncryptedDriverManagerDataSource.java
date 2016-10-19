@@ -1,8 +1,5 @@
 package bb.org.bd.security;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-
 import org.apache.log4j.Logger;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -13,43 +10,43 @@ public class EncryptedDriverManagerDataSource extends DriverManagerDataSource {
 	
 	@Override
 	public String getUrl() {
-		String url = super.getUrl();
-		System.out.println("url: " + url);
+		String url = "";
 		try {
+			url = super.getUrl();
+			//System.out.println("url: " + url);
 			url = EncryptDecryptMgr.decrypt(url);
-			logger.debug("url: " + url);
-		} catch (GeneralSecurityException e) {
+			//logger.debug("url: " + url);
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			logger.warn("Exception: ", e);
+		} 
 		return url;
 	}
 	
 	@Override
 	public String getUsername() {
-		String username = super.getUsername();
-		System.out.println("username: " + username);
+		String username = "";
 		try {
+			username = super.getUsername();
+			//System.out.println("username: " + username);
 			username = EncryptDecryptMgr.decrypt(username);
-			logger.debug("username: " + username);
-		} catch (GeneralSecurityException e) {
+			//logger.debug("username: " + username);
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			logger.warn("Exception: ", e);
+		} 
 		return username;
 	}
 	@Override
 	public String getPassword() {
-		String password = super.getPassword();
+		String password = "";
 		try {
+			password = super.getPassword();
 			password = EncryptDecryptMgr.decrypt(password);
-		} catch (GeneralSecurityException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			logger.warn("Exception: ", e);
+		} 
 		return password;
 	}
 
